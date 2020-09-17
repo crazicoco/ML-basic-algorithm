@@ -1,0 +1,53 @@
+http://archive.ics.uci.edu/ml/index.php
+http://archive.ics.uci.edu/ml/machine-learning-databases/
+以上两个链接有你想要的任何数据集
+声呐数据集（sonar_dataset）：
+https://archive.ics.uci.edu/ml/machine-learning-databases/undocumented/connectionist-bench/sonar/
+共208个观察值，60个输入变量，1个输出变量。
+输入变量每个数字代表特定频带内的能量，在一段时间内积分。
+与每个记录相关联的标签包含字母“R”（如果对象是岩石）和“M”（如果它是矿井（金属圆柱体））。
+预测最普遍类的基准性能是约 53％ 的分类准确率，最佳结果达到约 88% 的分类准确率。
+########################################################################
+钞票数据集（banknote_dataset）:
+http://archive.ics.uci.edu/ml/machine-learning-databases/00267/
+共1372个观察值，4个输入变量一个输出变量。
+预测最普遍类的基准性能是约 50％ 的分类准确率。
+########################################################################
+鸢尾花数据集（Iris_flowers_data）:
+http://archive.ics.uci.edu/ml/machine-learning-databases/iris/
+共150个观察值，4个输入变量，1个输出变量。
+萼片长度（cm），萼片宽度（cm），花瓣长度（cm），花瓣宽度（cm）
+类（Iris Setosa，Iris Versicolour，Iris Virginica）
+预测最普遍类的基准性能是约 26％ 的分类准确率。
+#######################################################################
+鲍鱼数据集（abalone_dataset）:
+http://archive.ics.uci.edu/ml/machine-learning-databases/abalone/
+共4177个观察值，8个输入变量和一个输出变量。
+性别（M，F，I），长度，直径，高度，总重量，剥壳重量，内脏重量，壳重
+环的数量
+预测最普遍类的基准性能是约 16％ 的分类准确率，预测平均值的基准性能的均方根误差（RMSE）是约 3.2 个环。
+#######################################################################
+电离层数据集（lonosphere_dataset）:
+https://archive.ics.uci.edu/ml/machine-learning-databases/ionosphere
+共351个观察值，34个输入变量，1个输出变量
+17个脉冲，每个脉冲两个属性
+类属性1个，g表示good，b表示bad
+预测最普遍类的基准性能是约 64％ 的分类准确率，最佳结果达到约 94% 的分类准确率。
+#######################################################################
+小麦种子数据集（wheat_seeds_dataset）:
+http://archive.ics.uci.edu/ml/machine-learning-databases/00236/
+共210个观察值，7个输入变量，一个输出变量
+区域，周长，压实度，籽粒长度，籽粒宽度，不对称系数，籽粒腹沟长度
+类（1,2,3）
+预测最普遍类的基准性能是约 28％ 的分类准确率。
+#######################################################################
+波士顿房价数据集（boston_house_price_dataset）：
+（房价预测数据集）
+https://archive.ics.uci.edu/ml/machine-learning-databases/housing/
+共506个观察，13个输入变量，1个输出变量
+CRIM：城镇人均犯罪率。ZN：住宅用地超过 25000 sq.ft. 的比例。INDUS：城镇非零售商用土地的比例。
+CHAS：查理斯河空变量（如果边界是河流，则为1；否则为0）。NOX：一氧化氮浓度。RM：住宅平均房间数。
+AGE：1940 年之前建成的自用房屋比例。DIS：到波士顿五个中心区域的加权距离。RAD：辐射性公路的接近指数。
+TAX：每 10000 美元的全值财产税率。PTRATIO：城镇师生比例。B：1000（Bk-0.63）^ 2，其中 Bk 指代城镇中黑人的比例。
+LSTAT：人口中地位低下者的比例。MEDV：自住房的平均房价，以千美元计。
+预测平均值的基准性能的均方根误差（RMSE）是约 9.21 千美元。

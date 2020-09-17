@@ -1,0 +1,103 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+"""
+    75%数据用来训练，25数据用来测试
+"""
+
+
+def Computer_cost(X, y, theta):
+    m = len(y)
+    j = 0
+    X = np.array(X)
+    h = np.dot(X, theta) - y
+    j = np.dot(np.transpose(h), h) / (2 * m)  # computer cost
+    return j
+
+
+def GradientDescent(X, y, theta, alpha, num_iters):
+    m = len(y)
+    n = len(theta)
+    j_history = np.zeros(num_iters)
+    for i in range(num_iters):
+        theta = theta - (alpha / m) * (np.dot(np.transpose(X), np.dot(X, theta) - y))
+        h = Computer_cost(X, y, theta)
+        j_history[i] = h
+        print(".")
+    return theta, j_history
+
+
+def featureNormalize(X):
+    x_norm = np.array(X)
+    mu = np.zeros(1, X.shape[1])
+    sigma = np.zeros(1, X.shape[1])
+    mu = np.mean(x_norm, 0)  # get the mean of every column
+    sigma = np.std(x_norm, 0)  # get the std of every column
+    for i in range(X.shape[1]):
+        x_norm[:, i] = (x_norm[:, i] - mu[i]) / sigma[i]
+    return x_norm, mu, sigma
+
+
+def load_file(root):
+    with open(root, "r") as f:
+        head = f.readline()
+        Year, Salary = head.split(",")
+        data_str = f.readlines()
+
+    data_year = []
+    data_salary = []
+    for idx, str in enumerate(data_str):
+        str_year, str_salary = str.split(",")
+        x_sample = float(str_year)
+        data_year.append(x_sample)
+        str_salary, _ = str_salary.split("\n")
+        data_salary.append(float(str_salary))
+    assert len(data_year) == len(data_salary)
+    return data_year, data_salary
+
+
+# 显示当前的数据和迭代后损失关系
+def plot_X_Y_1(X, y):
+    plt.scatter(X, y)
+    plt.show()
+
+
+def plot_X_Y_2(X, y, theta):
+    plt.scatter(X, y)
+    x = np.linspace(1, 10, 12)
+    g = theta[0] * x + theta[1]
+    plt.plot(x, g)
+    plt.show()
+
+
+def main():
+    print("加载数据中......")
+    data_dir = "data\\Salary_Data.csv"
+    data_year, data_salary = load_file(data_dir)
+    # 本数据y对应薪水不适宜归一化
+    # print("对数据进行归一化")
+    print("扩充x一列1")
+    X = list([year, 1] for year in data_year)
+    print("划分数据集为80%作为训练数据集，20%作为测试数据集")
+    year_train = X[:int(len(X) * 0.8)]
+    salary_train = data_salary[:int(len(X) * 0.8)]
+    year_test = X[int(len(X) * 0.8):]
+    salary_test = data_salary[int(len(X) * 0.8):]
+
+    theta = np.ones(2)
+    theta, j_cost = GradientDescent(year_train, salary_train, theta, 0.01, 500)
+    x = np.linspace(1, 500, 500)
+    print("输出随着迭代，损失下降图")
+    plot_X_Y_1(x, j_cost)
+    print("输出散点以及对应的模拟函数")
+    plot_X_Y_2(data_year, data_salary, theta)
+    result = [(theta[0] * x + theta[1]) for x, _ in year_test]
+    sum = 0
+    for s, r in zip(salary_test, result):
+        sum += s - r
+    print(sum)
+
+
+if __name__ == "__main__":
+    main()
