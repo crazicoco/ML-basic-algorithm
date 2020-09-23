@@ -1,9 +1,10 @@
 """
 task: MEM do the 2 classical task
 model :MEM
+author:crazicoco
 dataset:sonar_dataset
 最大熵不利用处理特征是连续数值的任务，最好是特征空间比较小的
-
+代码：参考自python-mem-master 具体网址找不到了，在此标明
 下面给出几个已实现的MEM模型
 OpenNLP : http://incubator.apache.org/opennlp/ 
 
